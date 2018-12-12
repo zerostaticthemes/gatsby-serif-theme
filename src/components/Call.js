@@ -1,23 +1,40 @@
 import React from "react"
-import { StaticQuery, graphql, Link } from 'gatsby'
+import { StaticQuery } from 'gatsby'
 
 const Call = (props) => {
-    console.log("Call", props)
+  console.log("Call", props)
   return (
-    <div class="call">
-    <div class="call-box-top">
-    <div class="call-phone"><strong>Phone: </strong>  </div>
-    <div class="call-email"><strong>Email: </strong>
-        <a href="mailto:">
-       
+    <div className="call">
+    <div className="call-box-top">
+    <div className="call-phone"><strong>Phone: </strong> {props.data.site.siteMetadata.contact.phone} </div>
+    <div className="call-email"><strong>Email: </strong>
+        <a href={`mailto:${props.data.site.siteMetadata.contact.email}`}>
+        {props.data.site.siteMetadata.contact.email} 
         </a>
     </div>
     </div>
-    <div class="call-box-bottom">
-    <a href="/contact" class="button">Contact</a>
+    <div className="call-box-bottom">
+    <a href="/contact" className="button">Contact</a>
     </div>
     </div>
   )
 }
-
-export default Call
+export default props => (
+<StaticQuery 
+    query={graphql`
+      query {
+        site {
+          siteMetadata {
+            title
+            description
+            contact {
+              email
+              phone
+            }
+          }
+        }
+      }
+    `}
+    render={data => <Call data={data}/>}
+  />
+)

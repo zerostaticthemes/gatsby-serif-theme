@@ -1,9 +1,9 @@
 import React from "react"
-import { StaticQuery, graphql, Link } from 'gatsby'
+import { Link } from 'gatsby'
 
 const Menu = () => {
   return (
-    <div id="main-menu" class="main-menu">
+    <div id="main-menu" className="main-menu">
         <ul>
             <li>
             <Link to="/">

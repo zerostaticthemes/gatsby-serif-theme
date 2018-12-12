@@ -1,5 +1,4 @@
 import React from "react"
-import { graphql, Link } from 'gatsby'
 import BodyClassName from 'react-body-classname';
 
 const Services = (props) => {

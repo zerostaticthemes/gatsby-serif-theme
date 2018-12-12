@@ -1,9 +1,9 @@
 import React from "react"
-import { StaticQuery, graphql, Link } from 'gatsby'
+import { Link } from 'gatsby'
 
 const MenuMobile = () => {
   return (
-    <div id="main-menu-mobile" class="main-menu-mobile">
+    <div id="main-menu-mobile" className="main-menu-mobile">
         <ul>
             <li>
             <Link to="/">

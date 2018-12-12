@@ -1,7 +1,11 @@
 module.exports = {
     siteMetadata: {
         title: "Serif",
-        description: "my theme"
+        description: "my theme",
+        contact: {
+            phone: "XXX XXX XXX",
+            email: "zerostaticthemes@gmail.com"
+        }
     },
     plugins: [
         'gatsby-transformer-remark',

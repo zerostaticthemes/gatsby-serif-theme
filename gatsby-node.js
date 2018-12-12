@@ -40,49 +40,49 @@ exports.createPages = ({ graphql, actions }) => {
 };
 
 
-exports.createPages = ({ graphql, actions }) => {
-  const { createPage } = actions;
+// exports.createPages = ({ graphql, actions }) => {
+//   const { createPage } = actions;
 
-  return new Promise((resolve, reject) => {
-    const service = path.resolve("src/templates/service.js");
+//   return new Promise((resolve, reject) => {
+//     const service = path.resolve("src/templates/service.js");
 
-    resolve(
-      graphql(
-        `
-          query {
-            allMarkdownRemark(
-              filter: { fileAbsolutePath: {regex : "\/services/"} },
-              sort: {fields: [frontmatter___date], order: DESC},
-            ) {
-              totalCount
-              edges {
-                node {
-                  id
-                  frontmatter {
-                    path
-                    title
-                    date(formatString: "DD MMMM YYYY")
-                  }
-                  excerpt
-                }
-              }
-            }
-          }
-        `
-      ).then(result => {
-        result.data.allMarkdownRemark.edges.forEach(({node}) => {
-          const path = node.frontmatter.path
-          createPage({
-            path,
-            component: service,
-            context: {
-              pathSlug: path
-            }
-          })
+//     resolve(
+//       graphql(
+//         `
+//           query {
+//             allMarkdownRemark(
+//               filter: { fileAbsolutePath: {regex : "\/services/"} },
+//               sort: {fields: [frontmatter___date], order: DESC},
+//             ) {
+//               totalCount
+//               edges {
+//                 node {
+//                   id
+//                   frontmatter {
+//                     path
+//                     title
+//                     date(formatString: "DD MMMM YYYY")
+//                   }
+//                   excerpt
+//                 }
+//               }
+//             }
+//           }
+//         `
+//       ).then(result => {
+//         result.data.allMarkdownRemark.edges.forEach(({node}) => {
+//           const path = node.frontmatter.path
+//           createPage({
+//             path,
+//             component: service,
+//             context: {
+//               pathSlug: path
+//             }
+//           })
 
-          resolve()
-        })
-      })
-    );
-  });
-};
+//           resolve()
+//         })
+//       })
+//     );
+//   });
+// };

@@ -7,13 +7,12 @@ const Layout = ({ children }) => {
   return (
     <div>
       <MenuMobile />
-      <div id="wrapper" class="wrapper">
+      <div id="wrapper" className="wrapper">
         <Header />
         {children}
       </div>
     </div>
   )
 }
-    
 
 export default Layout
