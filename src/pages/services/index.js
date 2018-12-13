@@ -1,14 +1,12 @@
-import React from "react"
+import React from 'react';
 import BodyClassName from 'react-body-classname';
 
-const Services = (props) => {
-  return (
+const Services = props => (
     <BodyClassName className="page-services">
-    <div>
-     <h1>Services</h1>
-    </div>
+      <div>
+        <h1>Services</h1>
+      </div>
     </BodyClassName>
-  )
-}
+);
 
-export default Services
+export default Services;

@@ -1,6 +1,7 @@
 import React from 'react';
-import { graphql, Link } from 'gatsby';
+import { graphql, withPrefix, Link } from 'gatsby';
 import BodyClassName from 'react-body-classname';
+import Img from 'gatsby-image';
 import Layout from '../layouts/index';
 import Call from '../components/Call';
 
@@ -53,11 +54,11 @@ const Home = (props) => {
               <h2 className="title-3 text-dark mb-4">Our Features</h2>
             </div>
             {json.map(edge => (
-              <div className="col-12 col-md-6 col-lg-4 mb-2">
+              <div key={edge.node.id} className="col-12 col-md-6 col-lg-4 mb-2">
                 <div className="feature">
                   {edge.node.image && (
                     <div className="feature-image">
-                      <img alt={edge.node.title} src={edge.node.image} />
+                      <img src={withPrefix(edge.node.image)} />
                     </div>
                   )}
                   <h2 className="feature-title">{edge.node.title}</h2>
@@ -88,6 +89,7 @@ export const query = graphql`
     allFeaturesJson {
       edges {
         node {
+          id
           title
           description
           image

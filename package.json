@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "gatsby": "^2.0.33",
+    "gatsby-image": "^2.0.24",
     "gatsby-plugin-sass": "^2.0.7",
     "gatsby-source-filesystem": "^2.0.12",
     "gatsby-transformer-json": "^2.1.6",
