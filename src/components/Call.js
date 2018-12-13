@@ -1,5 +1,5 @@
 import React from 'react';
-import { StaticQuery } from 'gatsby';
+import { StaticQuery, graphql } from 'gatsby';
 
 const Call = (props) => {
   console.log('Call', props);

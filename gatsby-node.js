@@ -1,10 +1,9 @@
 const path = require('path');
 
-// Create pages from markdown files in the /src/pages/services directory using the template /src/templates/service.js
+// Create pages from markdown files
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions;
   return new Promise((resolve, reject) => {
-    /* eslint-disable */
     resolve(
       graphql(
         `
@@ -58,42 +57,40 @@ exports.createPages = ({ graphql, actions }) => {
               }
             }
           }
-        `
-      ).then(result => {
-        console.log(result)
+        `,
+      ).then((result) => {
         result.data.services.edges.forEach(({ node }) => {
-          let component = path.resolve('src/templates/service.js')
+          const component = path.resolve('src/templates/service.js');
           createPage({
             path: node.frontmatter.path,
             component,
             context: {
               id: node.id,
             },
-          })
-        })
+          });
+        });
         result.data.team.edges.forEach(({ node }) => {
-          let component = path.resolve('src/templates/team.js')
+          const component = path.resolve('src/templates/team.js');
           createPage({
             path: node.frontmatter.path,
             component,
             context: {
               id: node.id,
             },
-          })
-        })
+          });
+        });
         result.data.testimonials.edges.forEach(({ node }) => {
-          let component = path.resolve('src/templates/testimonial.js')
+          const component = path.resolve('src/templates/testimonial.js');
           createPage({
             path: node.frontmatter.path,
             component,
             context: {
               id: node.id,
             },
-          })
-        })
-        resolve()
-      })
-    )
-    /* eslint-enable */
+          });
+        });
+        resolve();
+      }),
+    );
   });
 };
