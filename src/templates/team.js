@@ -3,7 +3,7 @@ import { graphql } from 'gatsby';
 import BodyClassName from 'react-body-classname';
 import Layout from '../layouts/index';
 
-const Service = ({ data }) => {
+const Team = ({ data }) => {
   const { title } = data.markdownRemark.frontmatter;
   const { html } = data.markdownRemark;
   return (
@@ -38,4 +38,4 @@ export const query = graphql`
   }
 `;
 
-export default Service;
+export default Team;

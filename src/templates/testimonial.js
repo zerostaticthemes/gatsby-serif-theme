@@ -3,9 +3,11 @@ import { graphql } from 'gatsby';
 import BodyClassName from 'react-body-classname';
 import Layout from '../layouts/index';
 
-const Service = ({ data }) => {
-  const { title } = data.markdownRemark.frontmatter;
-  const { html } = data.markdownRemark;
+const Testimonial = ({ data }) => {
+  console.log(data);
+  const { markdownRemark } = data;
+  const title = markdownRemark.frontmatter.title;
+  const html = markdownRemark.html;
   return (
     <BodyClassName className="page-service">
       <Layout>
@@ -38,4 +40,4 @@ export const query = graphql`
   }
 `;
 
-export default Service;
+export default Testimonial;

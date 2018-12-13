@@ -5,7 +5,6 @@ import Layout from '../../layouts/index';
 
 const Services = (props) => {
   const markdown = props.data.allMarkdownRemark.edges;
-  const json = props.data.allFeaturesJson.edges;
   return (
     <BodyClassName className="page-services">
       <Layout>
@@ -41,8 +40,11 @@ const Services = (props) => {
 };
 
 export const query = graphql`
-  query {
-    allMarkdownRemark {
+  query ServicesQuery {
+    allMarkdownRemark(
+      filter: { fileAbsolutePath: { regex: "/services/" } }
+      sort: { fields: [frontmatter___date], order: DESC }
+    ) {
       edges {
         node {
           excerpt
@@ -50,16 +52,6 @@ export const query = graphql`
             title
             path
           }
-        }
-      }
-    }
-    allFeaturesJson {
-      edges {
-        node {
-          id
-          title
-          description
-          image
         }
       }
     }

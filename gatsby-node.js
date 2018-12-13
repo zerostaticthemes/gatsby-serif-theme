@@ -1,59 +1,50 @@
 const path = require('path');
 
+// Create pages from markdown files in the /src/pages/services directory using the template /src/templates/service.js
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions;
-
   return new Promise((resolve, reject) => {
-    const blogPostTemplate = path.resolve('src/templates/blogPost.js');
-
+    /* eslint-disable */
     resolve(
       graphql(
         `
           query {
-            allMarkdownRemark {
-              edges {
-                node {
-                  frontmatter {
-                    path
-                  }
-                }
-              }
-            }
-          }
-        `,
-      ).then((result) => {
-        result.data.allMarkdownRemark.edges.forEach(({ node }) => {
-          const path = node.frontmatter.path;
-          createPage({
-            path,
-            component: blogPostTemplate,
-            context: {
-              pathSlug: path,
-            },
-          });
-
-          resolve();
-        });
-      }),
-    );
-  });
-};
-
-exports.createPages = ({ graphql, actions }) => {
-  const { createPage } = actions;
-
-  return new Promise((resolve, reject) => {
-    const service = path.resolve('src/templates/service.js');
-
-    resolve(
-      graphql(
-        `
-          query {
-            allMarkdownRemark(
+            services: allMarkdownRemark(
               filter: { fileAbsolutePath: { regex: "/services/" } }
               sort: { fields: [frontmatter___date], order: DESC }
             ) {
-              totalCount
+              edges {
+                node {
+                  id
+                  frontmatter {
+                    path
+                    title
+                    date(formatString: "DD MMMM YYYY")
+                  }
+                  excerpt
+                }
+              }
+            }
+            team: allMarkdownRemark(
+              filter: { fileAbsolutePath: { regex: "/team/" } }
+              sort: { fields: [frontmatter___date], order: DESC }
+            ) {
+              edges {
+                node {
+                  id
+                  frontmatter {
+                    path
+                    title
+                    date(formatString: "DD MMMM YYYY")
+                  }
+                  excerpt
+                }
+              }
+            }
+            testimonials: allMarkdownRemark(
+              filter: { fileAbsolutePath: { regex: "/testimonials/" } }
+              sort: { fields: [frontmatter___date], order: DESC }
+            ) {
               edges {
                 node {
                   id
@@ -67,21 +58,42 @@ exports.createPages = ({ graphql, actions }) => {
               }
             }
           }
-        `,
-      ).then((result) => {
-        result.data.allMarkdownRemark.edges.forEach(({ node }) => {
-          const path = node.frontmatter.path;
+        `
+      ).then(result => {
+        console.log(result)
+        result.data.services.edges.forEach(({ node }) => {
+          let component = path.resolve('src/templates/service.js')
           createPage({
-            path,
-            component: service,
+            path: node.frontmatter.path,
+            component,
             context: {
-              pathSlug: path,
+              id: node.id,
             },
-          });
-
-          resolve();
-        });
-      }),
-    );
+          })
+        })
+        result.data.team.edges.forEach(({ node }) => {
+          let component = path.resolve('src/templates/team.js')
+          createPage({
+            path: node.frontmatter.path,
+            component,
+            context: {
+              id: node.id,
+            },
+          })
+        })
+        result.data.testimonials.edges.forEach(({ node }) => {
+          let component = path.resolve('src/templates/testimonial.js')
+          createPage({
+            path: node.frontmatter.path,
+            component,
+            context: {
+              id: node.id,
+            },
+          })
+        })
+        resolve()
+      })
+    )
+    /* eslint-enable */
   });
 };
