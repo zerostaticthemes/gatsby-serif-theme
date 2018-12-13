@@ -1,18 +1,35 @@
-import React from "react"
-import { Link } from 'gatsby'
+import React from 'react';
+import { StaticQuery, Link } from 'gatsby';
 
-const Menu = () => {
+const Menu = (props) => {
+  const { menuLinks } = props.data.site.siteMetadata;
   return (
     <div id="main-menu" className="main-menu">
-        <ul>
-            <li>
-            <Link to="/">
-                Home
-            </Link>
-            </li>
-        </ul>
+      <ul>
+        {menuLinks.map(link => (
+          <li key={link.name}>
+            <Link to={link.link}>{link.name}</Link>
+          </li>
+        ))}
+      </ul>
     </div>
-  )
-}
+  );
+};
 
-export default Menu
+export default props => (
+  <StaticQuery
+    query={graphql`
+      query SiteTitleQuery {
+        site {
+          siteMetadata {
+            menuLinks {
+              name
+              link
+            }
+          }
+        }
+      }
+    `}
+    render={data => <Menu data={data} />}
+  />
+);

@@ -1,6 +1,7 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import BodyClassName from 'react-body-classname';
+import Layout from '../layouts/index';
 
 const Service = ({ data }) => {
   console.log(data);
@@ -8,18 +9,21 @@ const Service = ({ data }) => {
   const title = markdownRemark.frontmatter.title;
   const html = markdownRemark.html;
   return (
-    <BodyClassName className="helloworld">
-      <div>
-        Service
-        <h1 style={{ fontFamily: 'avenir' }}>{title}</h1>
-        <div
-          className="blogpost"
-          dangerouslySetInnerHTML={{ __html: html }}
-          style={{
-            fontFamily: 'avenir',
-          }}
-        />
-      </div>
+    <BodyClassName className="page-service">
+      <Layout>
+        <div className="strip strip-white strip-diagonal">
+          <div className="container pt-4 pt-md-10">
+            <div className="row justify-content-start">
+              <div className="col-12 col-md-8">
+                <div className="service service-single">
+                  <h1 className="title">{title}</h1>
+                  <div className="content" dangerouslySetInnerHTML={{ __html: html }} />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Layout>
     </BodyClassName>
   );
 };

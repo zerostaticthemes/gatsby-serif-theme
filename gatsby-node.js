@@ -1,10 +1,10 @@
-const path = require('path')
+const path = require('path');
 
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions;
 
   return new Promise((resolve, reject) => {
-    const blogPostTemplate = path.resolve("src/templates/blogPost.js");
+    const blogPostTemplate = path.resolve('src/templates/blogPost.js');
 
     resolve(
       graphql(
@@ -20,69 +20,68 @@ exports.createPages = ({ graphql, actions }) => {
               }
             }
           }
-        `
-      ).then(result => {
-        result.data.allMarkdownRemark.edges.forEach(({node}) => {
-          const path = node.frontmatter.path
+        `,
+      ).then((result) => {
+        result.data.allMarkdownRemark.edges.forEach(({ node }) => {
+          const path = node.frontmatter.path;
           createPage({
             path,
             component: blogPostTemplate,
             context: {
-              pathSlug: path
-            }
-          })
+              pathSlug: path,
+            },
+          });
 
-          resolve()
-        })
-      })
+          resolve();
+        });
+      }),
     );
   });
 };
 
+exports.createPages = ({ graphql, actions }) => {
+  const { createPage } = actions;
 
-// exports.createPages = ({ graphql, actions }) => {
-//   const { createPage } = actions;
+  return new Promise((resolve, reject) => {
+    const service = path.resolve('src/templates/service.js');
 
-//   return new Promise((resolve, reject) => {
-//     const service = path.resolve("src/templates/service.js");
+    resolve(
+      graphql(
+        `
+          query {
+            allMarkdownRemark(
+              filter: { fileAbsolutePath: { regex: "/services/" } }
+              sort: { fields: [frontmatter___date], order: DESC }
+            ) {
+              totalCount
+              edges {
+                node {
+                  id
+                  frontmatter {
+                    path
+                    title
+                    date(formatString: "DD MMMM YYYY")
+                  }
+                  excerpt
+                }
+              }
+            }
+          }
+        `,
+      ).then((result) => {
+        result.data.allMarkdownRemark.edges.forEach(({ node }) => {
+          const path = node.frontmatter.path;
+          createPage({
+            path,
+            component: service,
+            context: {
+              pathSlug: path,
+            },
+          });
 
-//     resolve(
-//       graphql(
-//         `
-//           query {
-//             allMarkdownRemark(
-//               filter: { fileAbsolutePath: {regex : "\/services/"} },
-//               sort: {fields: [frontmatter___date], order: DESC},
-//             ) {
-//               totalCount
-//               edges {
-//                 node {
-//                   id
-//                   frontmatter {
-//                     path
-//                     title
-//                     date(formatString: "DD MMMM YYYY")
-//                   }
-//                   excerpt
-//                 }
-//               }
-//             }
-//           }
-//         `
-//       ).then(result => {
-//         result.data.allMarkdownRemark.edges.forEach(({node}) => {
-//           const path = node.frontmatter.path
-//           createPage({
-//             path,
-//             component: service,
-//             context: {
-//               pathSlug: path
-//             }
-//           })
-
-//           resolve()
-//         })
-//       })
-//     );
-//   });
-// };
+          resolve();
+        });
+      }),
+    );
+  });
+};
