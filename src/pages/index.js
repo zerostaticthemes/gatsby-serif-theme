@@ -1,54 +1,77 @@
-import React from "react"
-import { StaticQuery, graphql, Link } from 'gatsby'
-import Layout from "../layouts/index"
+import React from 'react';
+import { graphql, Link } from 'gatsby';
 import BodyClassName from 'react-body-classname';
-import Call from '../components/Call'
+import Layout from '../layouts/index';
+import Call from '../components/Call';
 
 const Home = (props) => {
-  console.log(props)
-  const { edges } = props.data.allMarkdownRemark
+  console.log(props);
+  const markdown = props.data.allMarkdownRemark.edges;
+  const json = props.data.allFeaturesJson.edges;
+
   return (
     <BodyClassName className="page-home">
-    <Layout>
-          <div className="intro pb-4">
-            <div className="container">
-              <h1>Serif</h1>
+      <Layout>
+        <div className="intro pb-4">
+          <div className="container">
+            <h1>Serif</h1>
+          </div>
+        </div>
+
+        <div className="container pt-2">
+          <Call />
+        </div>
+
+        <div className="container pt-8 pt-md-10">
+          <div className="row justify-content-start">
+            <div className="col-12">
+              <h2 className="title-3 text-dark mb-3">Our Services</h2>
             </div>
-          </div>
-
-          <div className="container pt-2">
-            <Call />
-          </div>
-
-          <div className="container pt-8 pt-md-10">
-            <div className="row justify-content-start">
-              <div className="col-12">
-                <h2 className="title-3 text-dark mb-3">Our Services</h2>
-              </div>
-              {edges.map(edge => {
-                return (
-                  <div key={edge.node.frontmatter.path} className="col-12 col-md-4 mb-1">
-                    <div className="service service-summary">
-                      <div className="service-content">
-                        <h2 className="service-title">
-                          <Link to={edge.node.frontmatter.path}>{edge.node.frontmatter.title}</Link>
-                        </h2>
-                        {edge.node.excerpt}
-                      </div>
-                    </div>
+            {markdown.map(edge => (
+              <div key={edge.node.frontmatter.path} className="col-12 col-md-4 mb-1">
+                <div className="service service-summary">
+                  <div className="service-content">
+                    <h2 className="service-title">
+                      <Link to={edge.node.frontmatter.path}>{edge.node.frontmatter.title}</Link>
+                    </h2>
+                    {edge.node.excerpt}
                   </div>
-                )
-              })}
-              <div className="col-12 text-center">
-                <Link className="button button-primary mt-2" to="/services">View All Services</Link>
+                </div>
               </div>
+            ))}
+            <div className="col-12 text-center">
+              <Link className="button button-primary mt-2" to="/services">
+                View All Services
+              </Link>
             </div>
           </div>
-          </Layout>
+        </div>
+
+        <div className="container pt-5 pb-5 pt-md-7 pb-md-7">
+          <div className="row justify-content-center">
+            <div className="col-12">
+              <h2 className="title-3 text-dark mb-4">Our Features</h2>
+            </div>
+            {json.map(edge => (
+              <div className="col-12 col-md-6 col-lg-4 mb-2">
+                <div className="feature">
+                  {edge.node.image && (
+                    <div className="feature-image">
+                      <img alt={edge.node.title} src={edge.node.image} />
+                    </div>
+                  )}
+                  <h2 className="feature-title">{edge.node.title}</h2>
+                  <div className="feature-content">{edge.node.description}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </Layout>
     </BodyClassName>
-  )
-}
- 
+  );
+};
+
 export const query = graphql`
   query {
     allMarkdownRemark {
@@ -62,7 +85,16 @@ export const query = graphql`
         }
       }
     }
+    allFeaturesJson {
+      edges {
+        node {
+          title
+          description
+          image
+        }
+      }
+    }
   }
-`
+`;
 
-export default Home
+export default Home;

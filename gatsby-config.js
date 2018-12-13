@@ -16,6 +16,14 @@ module.exports = {
                 path: `${__dirname}/src/pages`
             }
         },
-        `gatsby-plugin-sass`
+        `gatsby-plugin-sass`,
+        `gatsby-transformer-json`,
+        {
+            resolve: `gatsby-source-filesystem`,
+            options: {
+                path: `${__dirname}/src/data`,
+                name: `data`,
+            },
+        },
     ]
 }

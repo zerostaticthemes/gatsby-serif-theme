@@ -1,18 +1,20 @@
-import React from "react"
-import Header from '../components/Header'
-import MenuMobile from '../components/MenuMobile'
-import "../scss/style.scss"
+import React from 'react';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import SubFooter from '../components/SubFooter';
+import MenuMobile from '../components/MenuMobile';
+import '../scss/style.scss';
 
-const Layout = ({ children }) => {
-  return (
-    <div>
-      <MenuMobile />
-      <div id="wrapper" className="wrapper">
-        <Header />
-        {children}
-      </div>
+const Layout = ({ children }) => (
+  <div>
+    <MenuMobile />
+    <div id="wrapper" className="wrapper">
+      <Header />
+      {children}
     </div>
-  )
-}
+    <Footer />
+    <SubFooter />
+  </div>
+);
 
-export default Layout
+export default Layout;
