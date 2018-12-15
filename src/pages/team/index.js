@@ -5,12 +5,12 @@ import Layout from '../../layouts/index';
 const Team = (props) => {
   const teams = props.data.allMarkdownRemark.edges;
   return (
-    <Layout>
+    <Layout bodyClass="page-teams">
       <div className="intro">
         <div className="container">
           <div className="row">
             <div className="col-12">
-              <h1>Services</h1>
+              <h1>Team</h1>
             </div>
           </div>
         </div>

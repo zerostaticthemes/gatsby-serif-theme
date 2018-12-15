@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link, graphql } from 'gatsby';
-import BodyClassName from 'react-body-classname';
 import Layout from '../../layouts/index';
 
 const Services = (props) => {

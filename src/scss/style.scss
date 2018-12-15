@@ -59,11 +59,13 @@
 @import 'components/strip';
 @import 'components/whitebox';
 @import 'components/feature';
+@import 'components/call';
 
 // Pages
 @import 'pages/home';
 @import 'pages/team/page-teams';
 @import 'pages/testimonials/page-testimonials';
+@import 'pages/testimonials/testimonial';
 @import 'pages/services/page-services';
 @import 'pages/services/page-service';
 @import 'pages/services/service-single';

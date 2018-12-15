@@ -20,7 +20,7 @@ const Home = (props) => {
         </div>
 
         <div className="container pt-2">
-          <Call />
+          <Call button />
         </div>
 
         <div className="container pt-8 pt-md-10">
