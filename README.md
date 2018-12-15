@@ -1,12 +1,25 @@
-# gatsby-starter-hello-world
-Starter with the bare essentials needed for a [Gatsby](https://www.gatsbyjs.org/) site.
+# Gatsby Serif Theme
 
-Install this starter (assuming Gatsby is installed) by running from your CLI:
-```
-gatsby new gatsby-site https://github.com/gatsbyjs/gatsby-starter-hello-world
-```
+Serif is a beautiful small business theme for Gatsby. It contains content types for the archetypical small business website. The theme is fully responsive, blazing fast and artfully illustrated.
 
-Or [view the live demo here](https://gatsby-starter-hello-world-demo.netlify.com/).
+[Live Demo](https://gatsby-serif-theme.netlify.com/)
 
-## Running in development
+![Gatsby Serif Theme screenshot](https://github.com/JugglerX/gatsby-serif-theme/blob/master/screenshots/screenshot-with-border.png)
+
+## Theme features
+
+- Services (Markdown)
+- Team (Markdown)
+- Testimonials (Markdown)
+- Features (Data)
+- SCSS
+- Responsive design
+- Bootstrap 4 grid and media queries only
+- Responsive menu
+- Robust example content included
+- Royalty free illustrations included
+
+## Deployment
+
+`npm install`
 `gatsby develop`
