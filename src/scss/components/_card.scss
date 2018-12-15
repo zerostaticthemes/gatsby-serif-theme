@@ -1,0 +1,35 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  > div {
+    flex: 1 0 auto;
+  }
+  .card-image {
+    flex: 0 0 100px;
+    margin-right: 10px;
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+  }
+  .card-content {
+    flex: 1;
+    h2 {
+      font-family: $font-family-heading;
+      font-size: 1.6rem;
+    }
+    p {
+    }
+  }
+  .card-description {
+  }
+}
+
+.card-lifted {
+  border: 1px solid #dcdcdc;
+  border-radius: 3px;
+  box-shadow: 0 1px 18px rgba(0, 0, 0, 0.2);
+  background: #fff;
+  padding: 20px;
+}

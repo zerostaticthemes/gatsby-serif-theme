@@ -13,9 +13,8 @@
   .testimonials-meta {
     flex: 1;
     margin-bottom: 10px;
-
     p {
-      margin: 0;
+      margin-bottom: 0;
     }
     a {
     }
@@ -26,6 +25,7 @@
   .testimonials-name {
     font-weight: bold;
     display: inline-block;
+    margin-right: 10px;
   }
   .testimonials-jobtitle {
     display: inline-block;

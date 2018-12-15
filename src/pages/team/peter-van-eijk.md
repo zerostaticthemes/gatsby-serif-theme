@@ -6,7 +6,7 @@ draft: false
 image: '/team/peter-van-eijk-711986-unsplash.jpg'
 jobtitle: 'Director'
 email: 'peter@test.com'
-linkedinurl: 'https://www.linkedin.com/'
+linkedinurl: 'www.linkedin.com/pvanijk'
 weight: 1
 ---
 

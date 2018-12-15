@@ -1,0 +1,48 @@
+.card-two {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  > div {
+    flex: 1 0 auto;
+  }
+  .card-header {
+    display: flex;
+    .card-header-left {
+      flex: 0;
+    }
+    .card-header-right {
+      flex: 1;
+    }
+    img {
+      margin-right: 10px;
+      width: 100px;
+      border-radius: 50%;
+    }
+    h2.card-title {
+      font-family: $font-family-heading;
+      font-size: 1.6rem;
+    }
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      li {
+        font-size: 1rem;
+        color: rgb(87, 87, 87);
+        margin: 0;
+        line-height: 1.3;
+      }
+    }
+    .card-meta {
+      flex: 1 0 auto;
+    }
+  }
+}
+
+.card-lifted {
+  border: 1px solid #dcdcdc;
+  border-radius: 3px;
+  box-shadow: 0 1px 18px rgba(0, 0, 0, 0.2);
+  background: #fff;
+  padding: 20px;
+}

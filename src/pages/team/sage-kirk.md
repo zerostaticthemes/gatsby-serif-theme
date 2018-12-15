@@ -6,7 +6,7 @@ draft: false
 image: '/team/sage-kirk-485982-unsplash.jpg'
 jobtitle: 'Accountant'
 email: 'sage@test.com'
-linkedinurl: ''
+linkedinurl: 'www.linkedin.com/sagekirk21'
 weight: 2
 ---
 

@@ -60,6 +60,8 @@
 @import 'components/whitebox';
 @import 'components/feature';
 @import 'components/call';
+@import 'components/card';
+@import 'components/card-two';
 
 // Pages
 @import 'pages/home';
@@ -68,8 +70,6 @@
 @import 'pages/testimonials/testimonial';
 @import 'pages/services/page-services';
 @import 'pages/services/page-service';
-@import 'pages/services/service-single';
-@import 'pages/services/service-summary';
 
 // Display breakpoints for DEV
 // body:after {
