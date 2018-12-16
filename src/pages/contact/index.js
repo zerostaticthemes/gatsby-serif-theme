@@ -1,10 +1,11 @@
 import React from 'react';
-import { Link, graphql } from 'gatsby';
+import SEO from '../../components/SEO';
 import Layout from '../../layouts/index';
 import Call from '../../components/Call';
 
 const Contact = props => (
   <Layout bodyClass="page-contact">
+    <SEO title="Contact" />
     <div className="intro intro-small">
       <div className="container">
         <div className="row">

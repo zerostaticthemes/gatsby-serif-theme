@@ -1,11 +1,13 @@
 import React from 'react';
 import { Link, graphql } from 'gatsby';
+import SEO from '../../components/SEO';
 import Layout from '../../layouts/index';
 
 const Services = (props) => {
   const services = props.data.allMarkdownRemark.edges;
   return (
     <Layout bodyClass="page-services">
+      <SEO title="Services" />
       <div className="intro">
         <div className="container">
           <div className="row">

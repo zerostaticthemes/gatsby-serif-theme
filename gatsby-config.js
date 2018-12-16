@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: 'Serif',
+    title: 'Gatsby Serif',
     description: 'my theme',
     contact: {
       phone: 'XXX XXX XXX',
@@ -29,6 +29,7 @@ module.exports = {
     'gatsby-plugin-sass',
     'gatsby-transformer-json',
     'gatsby-transformer-remark',
+    'gatsby-plugin-react-helmet',
     {
       resolve: 'gatsby-source-filesystem',
       options: {

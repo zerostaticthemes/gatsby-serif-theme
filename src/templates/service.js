@@ -1,5 +1,6 @@
 import React from 'react';
 import { graphql } from 'gatsby';
+import SEO from '../components/SEO';
 import Layout from '../layouts/index';
 
 const Service = ({ data }) => {
@@ -7,6 +8,7 @@ const Service = ({ data }) => {
   const { html } = data.markdownRemark;
   return (
     <Layout bodyClass="page-service">
+      <SEO title={title} />
       <div className="strip strip-white strip-diagonal">
         <div className="container pt-4 pt-md-10">
           <div className="row justify-content-start">

@@ -1,11 +1,13 @@
 import React from 'react';
-import { Link, graphql } from 'gatsby';
+import { graphql } from 'gatsby';
+import SEO from '../../components/SEO';
 import Layout from '../../layouts/index';
 
 const Testimonials = (props) => {
   const testimonials = props.data.allMarkdownRemark.edges;
   return (
     <Layout bodyClass="page-testimonials">
+      <SEO title="Testimonials" />
       <div className="intro">
         <div className="container">
           <div className="row">

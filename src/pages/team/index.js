@@ -1,11 +1,13 @@
 import React from 'react';
-import { Link, graphql } from 'gatsby';
+import { graphql } from 'gatsby';
+import SEO from '../../components/SEO';
 import Layout from '../../layouts/index';
 
 const Team = (props) => {
   const teams = props.data.allMarkdownRemark.edges;
   return (
     <Layout bodyClass="page-teams">
+      <SEO title="Team" />
       <div className="intro">
         <div className="container">
           <div className="row">
