@@ -3,7 +3,6 @@ import { graphql } from 'gatsby';
 import Layout from '../layouts/index';
 
 const Testimonial = ({ data }) => {
-  console.log(data);
   const { markdownRemark } = data;
   const title = markdownRemark.frontmatter.title;
   const html = markdownRemark.html;
