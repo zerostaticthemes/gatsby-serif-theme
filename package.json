@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "gatsby": "^2.0.33",
+    "gatsby-plugin-google-analytics": "^2.0.14",
     "gatsby-plugin-react-helmet": "^3.0.4",
     "gatsby-plugin-sass": "^2.0.7",
     "gatsby-source-filesystem": "^2.0.12",
