@@ -1,5 +1,5 @@
 import React from 'react';
-import { StaticQuery, Link } from 'gatsby';
+import { graphql, StaticQuery, Link } from 'gatsby';
 
 const Menu = (props) => {
   const { menuLinks } = props.data.site.siteMetadata;

@@ -12,7 +12,6 @@ class Hamburger extends React.Component {
     this.setState(prevState => ({
       hamburgerActive: !prevState.hamburgerActive,
     }));
-    console.log(this.state.hamburgerActive);
     this.props.toggleMenu(this.state.hamburgerActive);
   };
 

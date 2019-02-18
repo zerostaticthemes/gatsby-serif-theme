@@ -9,7 +9,6 @@ import MenuMobile from '../components/MenuMobile'
 import '../scss/style.scss'
 
 const Layout = props => {
-  console.log(props)
   return (
     <React.Fragment>
       <SEO />

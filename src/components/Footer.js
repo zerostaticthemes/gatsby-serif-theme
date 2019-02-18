@@ -1,5 +1,5 @@
 import React from 'react';
-import { StaticQuery, Link } from 'gatsby';
+import { graphql, Link, StaticQuery } from 'gatsby';
 
 const Footer = props => (
   <div className="footer-strip">

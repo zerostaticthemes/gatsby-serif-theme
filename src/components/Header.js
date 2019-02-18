@@ -18,7 +18,6 @@ class Header extends React.Component {
     this.setState(prevState => ({
       menuActive: !prevState.menuActive,
     }));
-    console.log(menuActive);
   };
 
   render() {
