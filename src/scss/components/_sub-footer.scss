@@ -7,6 +7,8 @@
 .sub-footer {
   display: flex;
   justify-content: space-between;
+  // Added by ali to prevent website overflowing page
+  overflow-x: hidden;
   ul {
     list-style: none;
     margin: 0;
