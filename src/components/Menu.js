@@ -1,14 +1,26 @@
 import React from 'react';
-import { graphql, StaticQuery, Link } from 'gatsby';
+import { graphql, useStaticQuery, Link } from 'gatsby';
 
 const Menu = (props) => {
-  const { menuLinks } = props.data.site.siteMetadata;
+  const data = useStaticQuery(graphql`
+    query MainMenuQuery {
+      allMainMenuJson {
+        edges {
+          node {
+            name
+            url
+            weight
+          }
+        }
+      }
+    }
+  `)
   return (
     <div id="main-menu" className="main-menu">
       <ul>
-        {menuLinks.map(link => (
-          <li key={link.name}>
-            <Link to={link.link}>{link.name}</Link>
+        {data.allMainMenuJson.edges.map(({ node }) => (
+          <li key={node.name}>
+            <Link to={node.url}>{node.name}</Link>
           </li>
         ))}
       </ul>
@@ -16,20 +28,4 @@ const Menu = (props) => {
   );
 };
 
-export default props => (
-  <StaticQuery
-    query={graphql`
-      query SiteTitleQuery {
-        site {
-          siteMetadata {
-            menuLinks {
-              name
-              link
-            }
-          }
-        }
-      }
-    `}
-    render={data => <Menu data={data} />}
-  />
-);
+export default Menu

@@ -40,22 +40,6 @@ exports.createPages = ({ graphql, actions }) => {
                 }
               }
             }
-            testimonials: allMarkdownRemark(
-              filter: { fileAbsolutePath: { regex: "/testimonials/" } }
-              sort: { fields: [frontmatter___date], order: DESC }
-            ) {
-              edges {
-                node {
-                  id
-                  frontmatter {
-                    path
-                    title
-                    date(formatString: "DD MMMM YYYY")
-                  }
-                  excerpt
-                }
-              }
-            }
           }
         `,
       ).then((result) => {
@@ -71,16 +55,6 @@ exports.createPages = ({ graphql, actions }) => {
         });
         result.data.team.edges.forEach(({ node }) => {
           const component = path.resolve('src/templates/team.js');
-          createPage({
-            path: node.frontmatter.path,
-            component,
-            context: {
-              id: node.id,
-            },
-          });
-        });
-        result.data.testimonials.edges.forEach(({ node }) => {
-          const component = path.resolve('src/templates/testimonial.js');
           createPage({
             path: node.frontmatter.path,
             component,

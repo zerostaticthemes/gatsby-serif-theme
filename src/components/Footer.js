@@ -1,48 +1,45 @@
 import React from 'react';
-import { graphql, Link, StaticQuery } from 'gatsby';
+import { graphql, useStaticQuery, Link } from 'gatsby';
 
-const Footer = props => (
-  <div className="footer-strip">
-    <div className="container">
-      <div className="row">
-        <div className="col-12">
-          <div className="footer">
-            <h3 className="footer-title">{props.data.site.siteMetadata.title}</h3>
-            <ul className="footer-menu">
-              <li>
-                {' '}
-                <Link to="/">Home</Link>
-              </li>
-              <li>
-                {' '}
-                <Link to="/contact">Contact</Link>
-              </li>
-              <li className="copyright">
-                ©
-{' '}
-{new Date().getFullYear()}
-{' '}
-{props.data.site.siteMetadata.title}
-              </li>
-            </ul>
+const Footer = props => {
+  const data = useStaticQuery(graphql`
+    query FooterQuery {
+      allFooterMenuJson {
+        edges {
+          node {
+            weight
+            url
+            name
+          }
+        }
+      }
+      site {
+        siteMetadata {
+          title
+        }
+      }
+    }
+  `);
+  return (
+    <div className="footer">
+      <div className="container">
+        <div className="row">
+          <div className="col-12">
+            <div className="footer-inner">
+              <h3 className="footer-title">{data.site.siteMetadata.title}</h3>
+              <ul>
+                {data.allFooterMenuJson.edges.map(({ node }) => (
+                  <li key={node.name}>
+                    <Link to={node.url}>{node.name}</Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-);
+  );
+};
 
-export default props => (
-  <StaticQuery
-    query={graphql`
-      query {
-        site {
-          siteMetadata {
-            title
-          }
-        }
-      }
-    `}
-    render={data => <Footer data={data} />}
-  />
-);
+export default Footer;

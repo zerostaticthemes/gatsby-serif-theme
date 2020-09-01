@@ -1,9 +1,9 @@
 import React from 'react';
-import { Link } from 'gatsby';
+import {graphql, Link, StaticQuery} from 'gatsby';
 import Menu from './Menu';
 import Hamburger from './Hamburger';
-import logo from '../images/logo.svg';
-import logoMobile from '../images/logo-mobile.svg';
+import logo from '../images/logo/logo.svg';
+import logoMobile from '../images/logo/logo-mobile.svg';
 import MenuMobile from './MenuMobile';
 
 class Header extends React.Component {
@@ -21,17 +21,18 @@ class Header extends React.Component {
   };
 
   render() {
+    const config = this.props.data.configJson;
     return (
       <div className="header">
         <div className="container">
           <div className="logo">
             <Link to="/">
-              <img alt="Figurit Homepage" src={logo} />
+              <img height={config.logo.desktop_height} alt={config.logo.alt} src={logo} />
             </Link>
           </div>
           <div className="logo-mobile">
             <Link to="/">
-              <img alt="Figurit Homepage" src={logoMobile} />
+              <img height={config.logo.desktop_height} alt={config.logo.alt} src={logoMobile} />
             </Link>
           </div>
           <MenuMobile active={this.state.menuActive} />
@@ -43,4 +44,18 @@ class Header extends React.Component {
   }
 }
 
-export default Header;
+export default props => (
+  <StaticQuery
+    query={graphql`
+      query HeaderQuery {
+        configJson {
+          logo {
+            alt
+            desktop_height
+          }
+        }
+      }
+    `}
+    render={data => <Header data={data}/>}
+  />
+);

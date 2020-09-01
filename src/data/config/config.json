@@ -1,0 +1,26 @@
+{
+    "homepage": {
+        "show_call_box": true
+    },
+    "logo": {
+        "mobile": "images/logo-mobile.svg",
+        "desktop": "images/logo.svg",
+        "desktop_height": "36px",
+        "alt": "Serif - A Hugo Business Theme"
+    },
+    "homepage_meta_tags": {
+        "meta_description": "Serif is a modern business theme for Hugo. It contains content types for the archetypical business website. The theme is fully responsive, blazing fast and artfully illustrated.",
+        "meta_og_title": "Hugo Serif Theme",
+        "meta_og_type": "website",
+        "meta_og_url": "https://hugo-serif.netlify.app",
+        "meta_og_image": "https://raw.githubusercontent.com/JugglerX/hugo-serif-theme/master/images/tn.png",
+        "meta_og_description": "Serif is a modern business theme for Hugo. It contains content types for the archetypical business website. The theme is fully responsive, blazing fast and artfully illustrated.",
+        "meta_twitter_card": "summary",
+        "meta_twitter_site": "@zerostaticio",
+        "meta_twitter_creator": "@zerostaticio"
+    },
+    "footer": {
+        "copyright_text": "Free Hugo theme by",
+        "copyright_link": "https://www.zerostatic.io"
+    }
+}

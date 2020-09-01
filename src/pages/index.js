@@ -2,7 +2,7 @@ import React from 'react';
 import { graphql, withPrefix, Link } from 'gatsby';
 import Helmet from 'react-helmet';
 import SEO from '../components/SEO';
-import Layout from '../layouts/index';
+import Layout from '../components/Layout';
 import Call from '../components/Call';
 
 const Home = (props) => {

@@ -1,6 +1,7 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import Layout from '../layouts/index';
+import Layout from '../components/Layout';
+
 
 const Team = ({ data }) => {
   const { title } = data.markdownRemark.frontmatter;
