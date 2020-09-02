@@ -4,3 +4,4 @@
 
 [build.environment]
   NODE_VERSION = "v10.18.0"
+  RUBY_VERSION = "2.6.2"

@@ -2,7 +2,7 @@
 
 Serif is a beautiful small business theme for Gatsby. It contains content types for the archetypical small business website. The theme is fully responsive, blazing fast and artfully illustrated.
 
-[Live Demo](https://gatsby-serif-theme.netlify.com/)
+[Live Demo](https://gatsby-serif.netlify.com/)
 
 ![Gatsby Serif Theme screenshot](https://github.com/JugglerX/gatsby-serif-theme/blob/master/screenshots/screenshot-with-border.png)
 
@@ -25,6 +25,8 @@ Serif is a beautiful small business theme for Gatsby. It contains content types 
 - Prettier code styling
 
 ## Deployment
+
+Gatsby requires node v10 or higher
 
 ```
 npm install
