@@ -92,7 +92,7 @@ export const query = graphql`
   query {
     services: allMarkdownRemark(
       filter: { fileAbsolutePath: { regex: "/services\/.*/" } }
-      sort: { fields: [frontmatter___weight], order: DESC }
+      sort: { fields: [frontmatter___weight], order: ASC }
       limit: 6
     ) {
       edges {

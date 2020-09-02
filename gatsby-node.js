@@ -62,7 +62,6 @@ exports.createPages = ({ graphql, actions }) => {
             }
             basic: allMarkdownRemark(
               filter: { fileAbsolutePath: { regex: "content/basic\/.*/" } }
-              sort: { fields: [frontmatter___date], order: DESC }
             ) {
               edges {
                 node {
@@ -72,6 +71,7 @@ exports.createPages = ({ graphql, actions }) => {
                   frontmatter {
                     title
                     path
+                    template
                   }
                   fields {
                     slug
@@ -103,7 +103,10 @@ exports.createPages = ({ graphql, actions }) => {
           });
         });
         result.data.basic.edges.forEach(({ node }) => {
-          const component = path.resolve('src/templates/basic.js');
+          let component = path.resolve('src/templates/basic.js');
+          if (node.frontmatter.template) {
+            component = path.resolve(`src/templates/${node.frontmatter.template}.js`);
+          }
           createPage({
             path: node.frontmatter.path ? node.frontmatter.path : node.fields.slug,
             component,
