@@ -1,30 +1,38 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import SEO from '../../components/SEO';
-import Layout from '../../components/Layout';
+import SEO from '../components/SEO';
+import Layout from '../components/Layout';
+import Call from '../components/Call';
 
-const Team = (props) => {
-  const teams = props.data.allMarkdownRemark.edges;
+const Team = props => {
+  const team = props.data.team.edges;
+  const { intro } = props.data;
+  const introImageClasses = `intro-image ${intro.intro_image_absolute && 'intro-image-absolute'} ${intro.intro_image_hide_on_mobile && 'intro-image-hide-mobile'}`;
+
   return (
     <Layout bodyClass="page-teams">
       <SEO title="Team" />
       <div className="intro">
         <div className="container">
-          <div className="row">
-            <div className="col-12">
-              <h1>Meet The Team</h1>
-              <p>
-                Our team of qualified accountants and financial consultants can help your business
-                at any stage of it’s growth.
-              </p>
+          <div className="row justify-content-start">
+            <div className="col-12 col-md-7 col-lg-6 order-2 order-md-1">
+              <div className="content" dangerouslySetInnerHTML={{ __html: intro.html }} />
+              {intro.show_call_box && (
+                <Call showButton />
+              )}
             </div>
+            {intro.intro_image && (
+              <div className="col-12 col-md-5 col-lg-6 order-1 order-md-2 position-relative">
+                <img alt={intro.title} className={introImageClasses} src={intro.intro_image} />
+              </div>
+            )}
           </div>
         </div>
       </div>
 
       <div className="container pb-6">
         <div className="row">
-          {teams.map(edge => (
+          {team.map(edge => (
             <div key={edge.node.frontmatter.path} className="col-12 col-md-6 mb-1">
               <div className="team card-two">
                 <div className="card-header">
@@ -71,22 +79,32 @@ const Team = (props) => {
 
 export const query = graphql`
   query TeamQuery {
-    allMarkdownRemark(
-      filter: { fileAbsolutePath: { regex: "/team/" } }
+    team: allMarkdownRemark(
+      filter: { fileAbsolutePath: { regex: "/(content/team)/" } }
       sort: { fields: [frontmatter___date], order: DESC }
     ) {
       edges {
         node {
-          html
+          excerpt
           frontmatter {
             title
             path
             image
             jobtitle
-            linkedinurl
             email
+            linkedinurl
           }
         }
+      }
+    }
+    intro: markdownRemark(fileAbsolutePath: {regex: "/(team.md)/"}) {
+      html
+      frontmatter {
+        image
+        intro_image
+        intro_image_absolute
+        intro_image_hide_on_mobile
+        title
       }
     }
   }

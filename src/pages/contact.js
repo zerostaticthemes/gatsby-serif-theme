@@ -1,7 +1,7 @@
 import React from 'react';
-import SEO from '../../components/SEO';
-import Layout from '../../components/Layout';
-import Call from '../../components/Call';
+import SEO from '../components/SEO';
+import Layout from '../components/Layout';
+import Call from '../components/Call';
 
 const Contact = props => (
   <Layout bodyClass="page-contact">
