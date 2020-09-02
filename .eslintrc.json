@@ -1,11 +1,11 @@
 {
     "parser": "babel-eslint",
     "extends": [
-        "airbnb"
+        "eslint:recommended",
+        "plugin:react/recommended"
     ],
     "plugins": [
         "react",
-        "react-hooks",
         "jsx-a11y"
     ],
     "env": {
@@ -17,7 +17,6 @@
         "sourceType": "module",
         "ecmaVersion": 6
     },
-
     "rules": {
         "max-len": ["error", { "code": 160 }],
         "quotes": ["error", "single", { "allowTemplateLiterals": true }],
@@ -27,30 +26,12 @@
         "arrow-body-style": ["error", "as-needed"],
         "no-unused-vars": 0,
         "no-console": 0,
+        "no-useless-escape": 0,
         "comma-dangle": ["error", "never"],
         "indent": ["error", 2],
-        "react/jsx-one-expression-per-line": ["off"],
-        "react/jsx-first-prop-new-line": ["error", "multiline-multiprop"],
         "react/no-unescaped-entities": 0,
-        "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
         "react/prop-types": 0,
         "react/jsx-props-no-spreading": ["off"],
-        "react/sort-comp": ["error", {
-            "order": [
-                "static-variables",
-                "static-methods",
-                "lifecycle",
-                "everything-else",
-                "/^is.+$/",
-                "/^on.+$/",
-                "/^render.+$/",
-                "render"
-            ]
-        }],
-        "react/static-property-placement": ["warn", "property assignment", {
-            "contextTypes": "static public field",
-            "contextType": "static public field"
-        }],
         "react/forbid-prop-types": ["off"],
         "class-methods-use-this": 0,
         "import/imports-first": 0,
@@ -59,7 +40,6 @@
         "import/no-extraneous-dependencies": 0,
         "import/no-named-as-default": 0,
         "import/no-unresolved": 2,
-        "import/no-webpack-loader-syntax": 0,
         "import/prefer-default-export": 0,
         "import/order": ["error"],
         "object-curly-newline": ["off", {

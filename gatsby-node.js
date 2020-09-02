@@ -1,4 +1,18 @@
 const path = require('path');
+const { createFilePath } = require(`gatsby-source-filesystem`);
+
+// Generate slug field for all markdown files
+exports.onCreateNode = ({ node, getNode, actions }) => {
+  const { createNodeField } = actions;
+  if (node.internal.type === `MarkdownRemark`) {
+    const slug = createFilePath({ node, getNode, basePath: `content` });
+    createNodeField({
+      node,
+      name: `slug`,
+      value: slug
+    });
+  }
+};
 
 // Create pages from markdown files
 exports.createPages = ({ graphql, actions }) => {
@@ -9,58 +23,62 @@ exports.createPages = ({ graphql, actions }) => {
         `
           query {
             services: allMarkdownRemark(
-              filter: { fileAbsolutePath: { regex: "/(content/services)/" } }
+              filter: { fileAbsolutePath: { regex: "content/services\/.*/" } }
               sort: { fields: [frontmatter___date], order: DESC }
             ) {
               edges {
                 node {
                   id
+                  excerpt
                   frontmatter {
-                    path
                     title
                     date(formatString: "DD MMMM YYYY")
                   }
-                  excerpt
+                  fields {
+                    slug
+                  }
                 }
               }
             }
             team: allMarkdownRemark(
-              filter: { fileAbsolutePath: { regex: "/(content/team)/" } }
+              filter: { fileAbsolutePath: { regex: "content/team\/.*/" } }
               sort: { fields: [frontmatter___date], order: DESC }
             ) {
               edges {
                 node {
                   id
+                  excerpt
                   frontmatter {
-                    path
                     title
                     date(formatString: "DD MMMM YYYY")
                   }
-                  excerpt
+                  fields {
+                    slug
+                  }
                 }
               }
             }
           }
         `,
-      ).then((result) => {
+      ).then(result => {
         result.data.services.edges.forEach(({ node }) => {
           const component = path.resolve('src/templates/service.js');
           createPage({
-            path: node.frontmatter.path,
+            path: node.frontmatter.path ? node.frontmatter.path : node.fields.slug,
             component,
             context: {
-              id: node.id,
-            },
+              id: node.id
+            }
           });
         });
         result.data.team.edges.forEach(({ node }) => {
           const component = path.resolve('src/templates/team.js');
           createPage({
-            path: node.frontmatter.path,
+            path: node.frontmatter.path ? node.frontmatter.path : node.fields.slug,
             component,
             context: {
-              id: node.id,
-            },
+              id: node.id
+            }
           });
         });
         resolve();

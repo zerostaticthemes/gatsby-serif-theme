@@ -24,12 +24,12 @@ const Call = props => {
             </a>
           </div>
         )}
-        {props.showButton && (
-          <div className="call-box-bottom">
-            <a href={data.contactJson.contact_button_link} className="button">Contact</a>
-          </div>
-        )}
       </div>
+      {props.showButton && (
+        <div className="call-box-bottom">
+          <a href={data.contactJson.contact_button_link} className="button">Contact</a>
+        </div>
+      )}
     </div>
   );
 };

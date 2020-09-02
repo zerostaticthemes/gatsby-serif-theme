@@ -3,7 +3,7 @@ const guid = process.env.NETLIFY_GOOGLE_ANALYTICS_ID;
 module.exports = {
   siteMetadata: {
     title: 'Gatsby Serif',
-    description: 'my theme',
+    description: 'my theme'
   },
   plugins: [
     'gatsby-plugin-sass',
@@ -44,6 +44,15 @@ module.exports = {
         trackingId: guid || 'UA-XXX-1',
         // Puts tracking script in the head instead of the body
         head: false
+      }
+    },
+    {
+      resolve: `gatsby-plugin-google-fonts`,
+      options: {
+        fonts: [
+          'Playfair+Display:400,700'
+        ],
+        display: 'swap'
       }
     }
   ]

@@ -7,23 +7,22 @@ import Call from '../components/Call';
 const Team = props => {
   const team = props.data.team.edges;
   const { intro } = props.data;
-  const introImageClasses = `intro-image ${intro.intro_image_absolute && 'intro-image-absolute'} ${intro.intro_image_hide_on_mobile && 'intro-image-hide-mobile'}`;
+  const introImageClasses = `intro-image ${intro.frontmatter.intro_image_absolute && 'intro-image-absolute'} ${intro.frontmatter.intro_image_hide_on_mobile && 'intro-image-hide-mobile'}`;
 
   return (
     <Layout bodyClass="page-teams">
       <SEO title="Team" />
+
       <div className="intro">
         <div className="container">
           <div className="row justify-content-start">
             <div className="col-12 col-md-7 col-lg-6 order-2 order-md-1">
-              <div className="content" dangerouslySetInnerHTML={{ __html: intro.html }} />
-              {intro.show_call_box && (
-                <Call showButton />
-              )}
+              <div dangerouslySetInnerHTML={{ __html: intro.html }} />
+              <Call showButton={true} />
             </div>
-            {intro.intro_image && (
+            {intro.frontmatter.intro_image && (
               <div className="col-12 col-md-5 col-lg-6 order-1 order-md-2 position-relative">
-                <img alt={intro.title} className={introImageClasses} src={intro.intro_image} />
+                <img alt={intro.frontmatter.title} className={introImageClasses} src={intro.frontmatter.intro_image} />
               </div>
             )}
           </div>
@@ -33,7 +32,7 @@ const Team = props => {
       <div className="container pb-6">
         <div className="row">
           {team.map(edge => (
-            <div key={edge.node.frontmatter.path} className="col-12 col-md-6 mb-1">
+            <div key={edge.node.id} className="col-12 col-md-6 mb-1">
               <div className="team card-two">
                 <div className="card-header">
                   <div className="card-header-left">
@@ -80,18 +79,19 @@ const Team = props => {
 export const query = graphql`
   query TeamQuery {
     team: allMarkdownRemark(
-      filter: { fileAbsolutePath: { regex: "/(content/team)/" } }
+      filter: { fileAbsolutePath: { regex: "/team\/.*/" } }
       sort: { fields: [frontmatter___date], order: DESC }
     ) {
       edges {
         node {
           excerpt
+          fields {
+            slug
+          }
           frontmatter {
             title
-            path
             image
             jobtitle
-            email
             linkedinurl
           }
         }

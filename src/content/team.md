@@ -1,5 +1,4 @@
 ---
-path: '/team'
 title: 'Team'
 intro_image: ""
 intro_image_absolute: true

@@ -3,8 +3,8 @@
         "show_call_box": true
     },
     "logo": {
-        "mobile": "images/logo-mobile.svg",
-        "desktop": "images/logo.svg",
+        "mobile": "/images/logo/logo-mobile.svg",
+        "desktop": "/images/logo/logo.svg",
         "desktop_height": "36px",
         "alt": "Serif - A Gatsby Business Theme"
     },

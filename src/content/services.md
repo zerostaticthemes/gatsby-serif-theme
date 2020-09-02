@@ -1,8 +1,6 @@
 ---
-path: '/services'
-date: 2018-11-19T10:47:58+10:00
 title: 'Services'
-intro_image: "images/pixeltrue-chatting-using-apps-1.svg"
+intro_image: "/images/illustrations/pixeltrue-chatting-using-apps-1.svg"
 intro_image_absolute: true
 intro_image_hide_on_mobile: false
 ---
