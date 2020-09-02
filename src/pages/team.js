@@ -18,7 +18,6 @@ const Team = props => {
           <div className="row justify-content-start">
             <div className="col-12 col-md-7 col-lg-6 order-2 order-md-1">
               <div dangerouslySetInnerHTML={{ __html: intro.html }} />
-              <Call showButton={true} />
             </div>
             {intro.frontmatter.intro_image && (
               <div className="col-12 col-md-5 col-lg-6 order-1 order-md-2 position-relative">
@@ -29,49 +28,52 @@ const Team = props => {
         </div>
       </div>
 
-      <div className="container pb-6">
+      <div className="container">
         <div className="row">
-          {team.map(edge => (
-            <div key={edge.node.id} className="col-12 col-md-6 mb-1">
-              <div className="team card-two">
-                <div className="card-header">
-                  <div className="card-header-left">
-                    {edge.node.frontmatter.image && (
-                      <div className="card-image">
-                        <img
-                          alt={edge.node.frontmatter.title}
-                          className="img-fluid mb-2"
-                          src={edge.node.frontmatter.image}
-                        />
-                      </div>
-                    )}
+          {team.filter(edge => (edge.node.frontmatter.promoted)).map(({node}) => (
+            <div key={node.id} className="col-12 col-md-6 mb-2">
+              <div className="team team-summary team-summary-large">
+                {node.frontmatter.image && (
+                  <div className="team-image">
+                    <img alt={`photo of ${node.frontmatter.title}`} className="img-fluid mb-2" src={node.frontmatter.image}/>
                   </div>
-                  <div className="card-right">
-                    <h2 className="card-title">{edge.node.frontmatter.title}</h2>
-                    <ul className="card-meta">
-                      <li>
-                        <strong>{edge.node.frontmatter.jobtitle}</strong>
-                      </li>
-                      <li>
-                        <a target="_blank" href={edge.node.frontmatter.linkedinurl}>
-                          {edge.node.frontmatter.linkedinurl}
-                        </a>
-                      </li>
-                      <li>
-                        <a href={edge.node.frontmatter.email}>{edge.node.frontmatter.email}</a>
-                      </li>
-                    </ul>
-                  </div>
+                )}
+                <div className="team-meta">
+                  <h2 className="team-name">{node.frontmatter.title}</h2>
+                  <p className="team-description">{node.frontmatter.jobtitle}</p>
+                  {node.frontmatter.linkedin && (
+                    <a target="_blank" href="{{ .Params.Linkedinurl }}">LinkedIn</a>
+                  )}
                 </div>
-                <div
-                  className="team-content"
-                  dangerouslySetInnerHTML={{ __html: edge.node.html }}
-                />
+                <div className="team-content">
+                  <p>{node.excerpt}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="row pt-6 pb-6">
+          {team.filter(edge => (!edge.node.frontmatter.promoted)).map(({node}) => (
+            <div key={node.id} className="col-12 col-md-6 mb-2">
+              <div className="team team-summary">
+                {node.frontmatter.image && (
+                  <div className="team-image">
+                    <img alt={`photo of ${node.frontmatter.title}`} className="img-fluid mb-2" src={node.frontmatter.image} />
+                  </div>
+                )}
+                <div className="team-meta">
+                  <h2 className="team-name">{node.frontmatter.title}</h2>
+                  <p className="team-description">{node.frontmatter.jobtitle}</p>
+                  {node.frontmatter.linkedin && (
+                    <a target="_blank" href="{{ .Params.Linkedinurl }}">LinkedIn</a>
+                  )}
+                </div>
               </div>
             </div>
           ))}
         </div>
       </div>
+
     </Layout>
   );
 };
@@ -84,12 +86,14 @@ export const query = graphql`
     ) {
       edges {
         node {
+          id
           excerpt
           fields {
             slug
           }
           frontmatter {
             title
+            promoted
             image
             jobtitle
             linkedinurl

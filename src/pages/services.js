@@ -2,7 +2,6 @@ import React from 'react';
 import { Link, graphql } from 'gatsby';
 import SEO from '../components/SEO';
 import Layout from '../components/Layout';
-import Call from '../components/Call';
 
 const Services = props => {
   const services = props.data.services.edges;
@@ -18,7 +17,6 @@ const Services = props => {
           <div className="row justify-content-start">
             <div className="col-12 col-md-7 col-lg-6 order-2 order-md-1">
               <div dangerouslySetInnerHTML={{ __html: intro.html }} />
-              <Call showButton={true} />
             </div>
             {intro.frontmatter.intro_image && (
               <div className="col-12 col-md-5 col-lg-6 order-1 order-md-2 position-relative">
@@ -32,7 +30,7 @@ const Services = props => {
       <div className="container pb-6">
         <div className="row">
           {services.map(edge => (
-            <div key={edge.node.frontmatter.path} className="col-12 col-md-4 mb-1">
+            <div key={edge.node.id} className="col-12 col-md-4 mb-1">
               <div className="card service service-teaser">
                 <div className="card-content">
                   <h2>
@@ -57,6 +55,7 @@ export const query = graphql`
     ) {
       edges {
         node {
+          id
           excerpt
           fields {
             slug
@@ -68,15 +67,15 @@ export const query = graphql`
       }
     }
     intro: markdownRemark(fileAbsolutePath: {regex: "/(services.md)/"}) {
-        html
-        frontmatter {
-          title
-          image
-          intro_image
-          intro_image_absolute
-          intro_image_hide_on_mobile
-        }
+      html
+      frontmatter {
+        title
+        image
+        intro_image
+        intro_image_absolute
+        intro_image_hide_on_mobile
       }
+    }
   }
 `;
 

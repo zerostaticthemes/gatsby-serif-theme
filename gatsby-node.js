@@ -50,7 +50,28 @@ exports.createPages = ({ graphql, actions }) => {
                   excerpt
                   frontmatter {
                     title
+                    promoted
+                    image
                     date(formatString: "DD MMMM YYYY")
+                  }
+                  fields {
+                    slug
+                  }
+                }
+              }
+            }
+            basic: allMarkdownRemark(
+              filter: { fileAbsolutePath: { regex: "content/basic\/.*/" } }
+              sort: { fields: [frontmatter___date], order: DESC }
+            ) {
+              edges {
+                node {
+                  id
+                  excerpt
+                  html
+                  frontmatter {
+                    title
+                    path
                   }
                   fields {
                     slug
@@ -73,6 +94,16 @@ exports.createPages = ({ graphql, actions }) => {
         });
         result.data.team.edges.forEach(({ node }) => {
           const component = path.resolve('src/templates/team.js');
+          createPage({
+            path: node.frontmatter.path ? node.frontmatter.path : node.fields.slug,
+            component,
+            context: {
+              id: node.id
+            }
+          });
+        });
+        result.data.basic.edges.forEach(({ node }) => {
+          const component = path.resolve('src/templates/basic.js');
           createPage({
             path: node.frontmatter.path ? node.frontmatter.path : node.fields.slug,
             component,

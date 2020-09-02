@@ -32,13 +32,6 @@ module.exports = {
       }
     },
     {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        path: `${__dirname}/src/images`,
-        name: 'images'
-      }
-    },
-    {
       resolve: 'gatsby-plugin-google-analytics',
       options: {
         trackingId: guid || 'UA-XXX-1',
