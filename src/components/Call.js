@@ -1,48 +1,37 @@
 import React from 'react';
-import { StaticQuery, graphql } from 'gatsby';
+import { graphql, useStaticQuery } from 'gatsby';
 
-const Call = props => (
-  <div className="call">
-    <div className="call-box-top">
-      <div className="call-phone">
-        <strong>Phone: </strong>
-        <a href={`tel:${props.data.site.siteMetadata.contact.phone}`}>
-        {props.data.site.siteMetadata.contact.phone}
-        </a>
-      </div>
-      <div className="call-email">
-        <strong>Email: </strong>
-        <a href={`mailto:${props.data.site.siteMetadata.contact.email}`}>
-          {props.data.site.siteMetadata.contact.email}
-        </a>
+const Call = props => {
+  const data = useStaticQuery(graphql`
+    query ContactQuery {
+        contactJson {
+          phone
+          email
+          contact_button_link
+        }
+    }
+   `);
+  return (
+    <div className="call">
+      <div className="call-box-top">
+        {data.contactJson.phone && (
+          <div className="call-phone"><strong>Phone: </strong> { data.contactJson.phone } </div>
+        )}
+        {data.contactJson.email && (
+          <div className="call-email"><strong>Email: </strong>
+            <a href={`mailto:${data.contactJson.email}`}>
+              {data.contactJson.email}
+            </a>
+          </div>
+        )}
+        {props.showButton && (
+          <div className="call-box-bottom">
+            <a href={data.contactJson.contact_button_link} className="button">Contact</a>
+          </div>
+        )}
       </div>
     </div>
-    {props.button && (
-      <div className="call-box-bottom">
-        <a href="/contact" className="button">
-          Contact
-        </a>
-      </div>
-    )}
-  </div>
-);
+  );
+};
 
-export default props => (
-  <StaticQuery
-    query={graphql`
-      query {
-        site {
-          siteMetadata {
-            title
-            description
-            contact {
-              email
-              phone
-            }
-          }
-        }
-      }
-    `}
-    render={data => <Call button={props.button} data={data} />}
-  />
-);
+export default Call;

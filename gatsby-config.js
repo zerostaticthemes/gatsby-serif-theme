@@ -6,26 +6,26 @@ module.exports = {
     description: 'my theme',
     contact: {
       phone: 'XXX XXX XXX',
-      email: 'zerostaticthemes@gmail.com',
+      email: 'zerostaticthemes@gmail.com'
     },
     menuLinks: [
       {
         name: 'Services',
-        link: '/services',
+        link: '/services'
       },
       {
         name: 'Team',
-        link: '/team',
+        link: '/team'
       },
       {
         name: 'Testimonials',
-        link: '/testimonials',
+        link: '/testimonials'
       },
       {
         name: 'Contact',
-        link: '/contact',
-      },
-    ],
+        link: '/contact'
+      }
+    ]
   },
   plugins: [
     'gatsby-plugin-sass',
@@ -35,31 +35,38 @@ module.exports = {
     {
       resolve: 'gatsby-source-filesystem',
       options: {
+        path: `${__dirname}/src/content`,
+        name: 'content'
+      }
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
         path: `${__dirname}/src/pages`,
-        name: 'pages',
-      },
+        name: 'pages'
+      }
     },
     {
       resolve: 'gatsby-source-filesystem',
       options: {
         path: `${__dirname}/src/data`,
-        name: 'data',
-      },
+        name: 'data'
+      }
     },
     {
       resolve: 'gatsby-source-filesystem',
       options: {
         path: `${__dirname}/src/images`,
-        name: 'images',
-      },
+        name: 'images'
+      }
     },
     {
       resolve: 'gatsby-plugin-google-analytics',
       options: {
-        trackingId: guid ? guid : 'UA-XXX-1',
+        trackingId: guid || 'UA-XXX-1',
         // Puts tracking script in the head instead of the body
-        head: false,
-      },
-    },
-  ],
+        head: false
+      }
+    }
+  ]
 };
