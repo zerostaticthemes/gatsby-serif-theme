@@ -1,5 +1,5 @@
 import React from 'react';
-import { graphql, withPrefix, Link } from 'gatsby';
+import { graphql, Link } from 'gatsby';
 import Helmet from 'react-helmet';
 import SEO from '../components/SEO';
 import Layout from '../components/Layout';
@@ -26,7 +26,7 @@ const Home = props => {
           <div className="row justify-content-start">
             <div className="col-12 col-md-7 col-lg-6 order-2 order-md-1">
               <div dangerouslySetInnerHTML={{ __html: intro.html }} />
-              <Call showButton={true} />
+              <Call showButton />
             </div>
             {intro.frontmatter.intro_image && (
               <div className="col-12 col-md-5 col-lg-6 order-1 order-md-2 position-relative">
