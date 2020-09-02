@@ -1,5 +1,5 @@
 import React from 'react';
-import {graphql, Link, StaticQuery} from 'gatsby';
+import { graphql, Link, StaticQuery } from 'gatsby';
 import Menu from './Menu';
 import Hamburger from './Hamburger';
 import logo from '../../static/images/logo/logo.svg';
@@ -10,13 +10,13 @@ class Header extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      menuActive: false,
+      menuActive: false
     };
   }
 
   toggleMenu = menuActive => {
     this.setState(prevState => ({
-      menuActive: !prevState.menuActive,
+      menuActive: !prevState.menuActive
     }));
   };
 
@@ -58,6 +58,6 @@ export default props => (
         }
       }
     `}
-    render={data => <Header data={data}/>}
+    render={data => <Header data={data} />}
   />
 );

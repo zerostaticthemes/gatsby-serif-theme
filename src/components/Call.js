@@ -15,10 +15,16 @@ const Call = props => {
     <div className="call">
       <div className="call-box-top">
         {data.contactJson.phone && (
-          <div className="call-phone"><strong>Phone: </strong> { data.contactJson.phone } </div>
+          <div className="call-phone">
+            <strong>Phone: </strong>
+            {' '}
+            { data.contactJson.phone }
+            {' '}
+          </div>
         )}
         {data.contactJson.email && (
-          <div className="call-email"><strong>Email: </strong>
+          <div className="call-email">
+            <strong>Email: </strong>
             <a href={`mailto:${data.contactJson.email}`}>
               {data.contactJson.email}
             </a>

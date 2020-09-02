@@ -1,7 +1,7 @@
 import React from 'react';
 import { graphql, useStaticQuery, Link } from 'gatsby';
 
-const Menu = (props) => {
+const Menu = props => {
   const data = useStaticQuery(graphql`
     query MainMenuQuery {
       allMainMenuJson {
@@ -14,7 +14,7 @@ const Menu = (props) => {
         }
       }
     }
-  `)
+  `);
   return (
     <div id="main-menu" className="main-menu">
       <ul>
@@ -28,4 +28,4 @@ const Menu = (props) => {
   );
 };
 
-export default Menu
+export default Menu;

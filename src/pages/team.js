@@ -30,12 +30,12 @@ const Team = props => {
 
       <div className="container">
         <div className="row">
-          {team.filter(edge => (edge.node.frontmatter.promoted)).map(({node}) => (
+          {team.filter(edge => (edge.node.frontmatter.promoted)).map(({ node }) => (
             <div key={node.id} className="col-12 col-md-6 mb-2">
               <div className="team team-summary team-summary-large">
                 {node.frontmatter.image && (
                   <div className="team-image">
-                    <img alt={`photo of ${node.frontmatter.title}`} className="img-fluid mb-2" src={node.frontmatter.image}/>
+                    <img alt={`photo of ${node.frontmatter.title}`} className="img-fluid mb-2" src={node.frontmatter.image} />
                   </div>
                 )}
                 <div className="team-meta">
@@ -53,7 +53,7 @@ const Team = props => {
           ))}
         </div>
         <div className="row pt-6 pb-6">
-          {team.filter(edge => (!edge.node.frontmatter.promoted)).map(({node}) => (
+          {team.filter(edge => (!edge.node.frontmatter.promoted)).map(({ node }) => (
             <div key={node.id} className="col-12 col-md-6 mb-2">
               <div className="team team-summary">
                 {node.frontmatter.image && (
