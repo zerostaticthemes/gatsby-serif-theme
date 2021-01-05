@@ -7,4 +7,5 @@ intro_image_hide_on_mobile: true
 
 # Serif - A Hugo Business Theme.
 
-Roamable contains content types for a typical business website. The theme is fully responsive, blazing fast and artfully illustrated.
+Roamable web site 
+contains content types for a typical business website. The theme is fully responsive, blazing fast and artfully illustrated.
