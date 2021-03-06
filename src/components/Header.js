@@ -2,8 +2,8 @@ import React from 'react';
 import { graphql, Link, StaticQuery } from 'gatsby';
 import Menu from './Menu';
 import Hamburger from './Hamburger';
-import logo from '../../static/images/logo/logo.svg';
-import logoMobile from '../../static/images/logo/logo-mobile.svg';
+// import logo from '../../static/images/logo/logo.svg';
+// import logoMobile from '../../static/images/logo/logo-mobile.svg';
 import MenuMobile from './MenuMobile';
 
 class Header extends React.Component {
@@ -44,7 +44,7 @@ class Header extends React.Component {
   }
 }
 
-export default props => (
+const props = () => (
   <StaticQuery
     query={graphql`
       query HeaderQuery {
@@ -61,3 +61,5 @@ export default props => (
     render={data => <Header data={data} />}
   />
 );
+
+export default props;
