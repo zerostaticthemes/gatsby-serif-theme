@@ -3,5 +3,5 @@
   command = "npm run build"
 
 [build.environment]
-  NODE_VERSION = "v10.18.0"
+  NODE_VERSION = "v14.15.1"
   RUBY_VERSION = "2.6.2"
