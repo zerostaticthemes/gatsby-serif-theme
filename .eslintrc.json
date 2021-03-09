@@ -1,9 +1,11 @@
 {
-    "parser": "babel-eslint",
+    "parser": "@babel/eslint-parser",
     "extends": [
-        "airbnb"
+        "eslint:recommended",
+        "plugin:react/recommended"
     ],
     "plugins": [
+        "@babel",
         "react",
         "jsx-a11y",
         "import"

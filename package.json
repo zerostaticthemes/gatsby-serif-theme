@@ -13,6 +13,7 @@
   },
   "engineStrict": true,
   "dependencies": {
+    "@babel/polyfill": "^7.12.1",
     "gatsby": "^3.0.3",
     "gatsby-plugin-google-analytics": "^3.0.0",
     "gatsby-plugin-google-fonts": "^1.0.1",
@@ -28,12 +29,17 @@
     "react-helmet": "^6.1.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.9.0",
-    "@babel/eslint-parser": "^7.13.8",
+    "@babel/cli": "^7.13.10",
+    "@babel/core": "^7.13.10",
+    "@babel/eslint-parser": "^7.13.10",
+    "@babel/eslint-plugin": "^7.13.10",
+    "@babel/plugin-proposal-class-properties": "^7.13.0",
+    "@babel/preset-env": "^7.13.10",
+    "@babel/preset-react": "^7.12.13",
     "eslint": "^7.21.0",
     "eslint-config-airbnb": "^18.2.1",
-    "eslint-plugin-import": "^2.20.2",
-    "eslint-plugin-jsx-a11y": "^6.2.3",
-    "eslint-plugin-react": "^7.19.0"
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.22.0"
   }
 }

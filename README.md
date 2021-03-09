@@ -9,6 +9,7 @@ Serif is a beautiful small business theme for Gatsby. It contains content types 
 
 ## Theme features
 
+- Gatsby v3
 - Multi-page theme (not just a blog) that uses Markdown for multiple content-types/templates. It uses `gatsby-transformer-remark` and has several examples of querying and filtering `allMarkdownRemark`
 - Includes a graphql query in `gatsby-node.js` that creates pages and templates by content type based on the folder `src/pages/services`, `src/pages/team`,
 - Services (Markdown)
@@ -22,12 +23,11 @@ Serif is a beautiful small business theme for Gatsby. It contains content types 
 - Robust example content included
 - Royalty free illustrations included
 - SEO Titles & Meta using `gatsby-plugin-react-helmet`
-- ESLint (google config)
-- Prettier code styling
+- ESLint
 
 ## Deployment
 
-Gatsby and Node SCSS requires node v10 or higher
+gatsby 3 and node-sass 5 requires node v12 or higher
 
 ```
 npm install
