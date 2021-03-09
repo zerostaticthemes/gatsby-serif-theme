@@ -25,7 +25,7 @@ Serif is a beautiful small business theme for Gatsby. It contains content types 
 - SEO Titles & Meta using `gatsby-plugin-react-helmet`
 - ESLint
 
-## Deployment
+## Install
 
 gatsby 3 and node-sass 5 requires node v12 or higher
 
@@ -34,11 +34,9 @@ npm install
 ```
 
 ```
-npm run start
+npm run develop
 ```
 
-OR if you have Gatsby installed globally you can run:
-
 ```
-gatsby develop
+npm run build
 ```
