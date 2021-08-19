@@ -27,7 +27,7 @@ Serif is a beautiful small business theme for Gatsby. It contains content types 
 
 ## Install
 
-gatsby 3 and node-sass 5 requires node v12 or higher
+gatsby 3 and node-sass 5 requires node v14 or higher
 
 ```
 npm install
