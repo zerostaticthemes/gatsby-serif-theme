@@ -18,7 +18,7 @@ const Home = props => {
       <Helmet>
         <meta
           name="description"
-          content="Small Business Theme. Multiple content types using Markdown and JSON sources. Responsive design and SCSS. This is a beautiful and artfully designed starting theme."
+          content=" content types using Markdown and JSON sources. Responsive design and SCSS. This is a beautiful and artfully designed starting theme."
         />
       </Helmet>
 
@@ -44,10 +44,10 @@ const Home = props => {
             <div className="row justify-content-start">
               {services.map(({ node }) => (
                 <div key={node.id} className="col-12 col-md-4 mb-1">
-                  <div className="service service-summary">
+                  <div className="serviceSummary">
                     <div className="service-content">
                       <h2 className="service-title">
-                        <Link to={node.fields.slug}>{node.frontmatter.title}</Link>
+                        <Link to="/about/">FOR THE GOOD OF OTHERS</Link>
                       </h2>
                       <p>{node.excerpt}</p>
                     </div>
@@ -57,7 +57,7 @@ const Home = props => {
             </div>
             <div className="row justify-content-center">
               <div className="col-auto">
-                <Link className="button button-primary" to="/services/">View All Services</Link>
+                <Link className="button button-primary" to="/mission/">Our Mission Statement</Link>
               </div>
             </div>
           </div>
@@ -66,7 +66,7 @@ const Home = props => {
 
       {features.length > 0 && (
         <div className="strip strip-grey">
-          <div className="container pt-6 pb-6 pt-md-10 pb-md-10">
+          <div className="-6 container ptpb-6 pt-md-10 pb-md-10">
             <div className="row justify-content-center">
               {features.map(({ node }) => (
                 <div key={node.id} className="col-12 col-md-6 col-lg-4 mb-2">

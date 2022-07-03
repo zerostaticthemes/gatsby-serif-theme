@@ -1,12 +1,12 @@
 [
     {
-        "name": "Services",
-        "url": "/services/",
+        "name": "Mission",
+        "url": "/mission/",
         "weight": 2
     },
     {
-        "name": "Team",
-        "url": "/team/",
+        "name": "Projects",
+        "url": "/projects/",
         "weight": 3
     },
     {
@@ -15,8 +15,14 @@
         "weight": 4
     },
     {
-        "name": "Contact",
-        "url": "/contact/",
+        "name": "Approval",
+        "url": "/approval/",
         "weight": 5
+    }, 
+    {
+        "name": "Contributions",
+        "url": "/contributions/",
+        "weight": 6
     }
+   
 ]

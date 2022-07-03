@@ -6,3 +6,33 @@
     flex: 1 0 0;
   }
 }
+
+.serviceSummary{
+  display:flex;
+  margin-left:23vw ;
+  flex: auto;
+  width: 40vw;
+}
+
+.missionAbout{
+  margin-top: 9vw;
+}
+
+.introAbout{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 60px;
+    padding-bottom: 60px;
+    overflow: hidden;
+    @include media-breakpoint-up(md) {
+      padding-top: 140px;
+      padding-bottom: 140px;
+    }
+}
+
+.approvalImg{
+  height:40vw;
+  width:40vw;
+  margin-top:-9vw;
+}

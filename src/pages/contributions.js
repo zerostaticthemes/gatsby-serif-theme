@@ -2,14 +2,10 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import SEO from '../components/SEO';
 import Layout from '../components/Layout';
-import Call from '../components/Call';
-import Approval from '/public/images/logo/Approval.svg'
 
-
-const Contact = ({ data }) => {
+const Basic = ({ data }) => {
   const { title } = data.markdownRemark.frontmatter;
   const { html } = data.markdownRemark;
-
 
   return (
     <Layout bodyClass="page-default-single">
@@ -17,13 +13,9 @@ const Contact = ({ data }) => {
         <div className="row justify-content-start">
           <div className="col-12 col-md-8">
             <h1 className="title">{title}</h1>
-            <Call showButton={false} />
-            <div className="content mt-4" dangerouslySetInnerHTML={{ __html: html }} />
+            <div className="content" dangerouslySetInnerHTML={{ __html: html }} />
           </div>
         </div>
-      </div>
-      <div>
-        <img className="approvalImg" src={Approval} />
       </div>
     </Layout>
   );
@@ -44,4 +36,4 @@ export const query = graphql`
   }
 `;
 
-export default Contact;
+export default Basic;

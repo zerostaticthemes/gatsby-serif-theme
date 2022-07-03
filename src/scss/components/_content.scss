@@ -9,7 +9,7 @@
     margin-bottom: 20px;
   }
   strong {
-    font-width: bold;
+    font-weight: bold;
   }
   em {
     font-style: italic;
@@ -91,3 +91,9 @@
     border-left: .25em solid $secondary;
   }
 }
+
+.projectsDiv{
+  height: auto;
+  margin-top: 3vw;
+}
+ 

@@ -6,10 +6,10 @@
         "mobile": "/images/logo/logo-mobile.svg",
         "desktop": "/images/logo/logo.svg",
         "desktop_height": "36px",
-        "alt": "Serif - A Gatsby Business Theme"
+        "alt": "The Morgan Foundation"
     },
     "homepage_meta_tags": {
-        "meta_description": "Serif is a modern business theme for Gatsby. It contains content types for the archetypical business website. The theme is fully responsive, blazing fast and artfully illustrated.",
+        "meta_description": "t contains content types for the archetypical business website. The theme is fully responsive, blazing fast and artfully illustrated.",
         "meta_og_title": "Gatsby Serif Theme",
         "meta_og_type": "website",
         "meta_og_url": "https://gatsby-serif.netlify.app/",
@@ -20,7 +20,7 @@
         "meta_twitter_creator": "@zerostaticio"
     },
     "footer": {
-        "copyright_text": "Free Gatsby theme by",
-        "copyright_link": "https://www.zerostatic.io"
+        "copyright_text": "",
+        "copyright_link": ""
     }
 }

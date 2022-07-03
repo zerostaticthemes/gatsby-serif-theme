@@ -12,10 +12,10 @@ const Services = props => {
     <Layout bodyClass="page-services">
       <SEO title="Services" />
 
-      <div className="intro">
+      <div className="introMission">
         <div className="container">
           <div className="row justify-content-start">
-            <div className="col-12 col-md-7 col-lg-6 order-2 order-md-1">
+            <div className="order-md-1 missionAbout">
               <div dangerouslySetInnerHTML={{ __html: intro.html }} />
             </div>
             {intro.frontmatter.intro_image && (
@@ -29,7 +29,7 @@ const Services = props => {
 
       <div className="container pb-6">
         <div className="row">
-          {services.map(edge => (
+          {/* {services.map(edge => (
             <div key={edge.node.id} className="col-12 col-md-4 mb-1">
               <div className="card service service-teaser">
                 <div className="card-content">
@@ -40,7 +40,7 @@ const Services = props => {
                 </div>
               </div>
             </div>
-          ))}
+          ))} */}
         </div>
       </div>
     </Layout>

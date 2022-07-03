@@ -1,13 +1,15 @@
 .intro-image {
-  width: 100%;
+  max-width: 100%;
   height: auto;
-  margin-top: -40px;
+  margin-bottom: 40vw;
+  margin-left: -38ch;
 }
 .intro-image-absolute {
   max-width: none;
 
   padding: 0;
-  margin-bottom: 30px;
+  margin-bottom: -200px;
+  
   @include media-breakpoint-up(sm) {
   }
   @include media-breakpoint-up(md) {
