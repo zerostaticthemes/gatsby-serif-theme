@@ -18,7 +18,7 @@ const Home = props => {
       <Helmet>
         <meta
           name="description"
-          content="Small Business Theme. Multiple content types using Markdown and JSON sources. Responsive design and SCSS. This is a beautiful and artfully designed starting theme."
+          content="Transforma tu empresa con Sube.cloud. Ofrecemos soluciones expertas en Migración a la Nube, Cultura DevOps y más. Da el próximo paso en tu transformación digital de manera eficiente y efectiva con nuestro equipo de expertos."
         />
       </Helmet>
 
@@ -57,7 +57,7 @@ const Home = props => {
             </div>
             <div className="row justify-content-center">
               <div className="col-auto">
-                <Link className="button button-primary" to="/services/">View All Services</Link>
+                <Link className="button button-primary" to="/services/">Todos nuestros servicios</Link>
               </div>
             </div>
           </div>
