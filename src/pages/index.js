@@ -1,20 +1,20 @@
 // reviewed;
-import React from 'react';
-import { graphql, Link } from 'gatsby';
-import Helmet from 'react-helmet';
-import SEO from '../components/SEO';
-import Layout from '../components/Layout';
-import Call from '../components/Call';
+import React from "react";
+import { graphql, Link } from "gatsby";
+import Helmet from "react-helmet";
+import SEO from "../components/SEO";
+import Layout from "../components/Layout";
+import Call from "../components/Call";
 
-const Home = props => {
+const Home = (props) => {
   const intro = props.data.intro; // { html, frontmatter: { title, image } }
   const site = props.data.site.siteMetadata;
   const services = props.data.services.edges;
   const features = props.data.features.edges;
   const introImageClasses = `intro-image ${
-    intro.frontmatter.intro_image_absolute && 'intro-image-absolute'
+    intro.frontmatter.intro_image_absolute && "intro-image-absolute"
   } ${
-    intro.frontmatter.intro_image_hide_on_mobile && 'intro-image-hide-mobile'
+    intro.frontmatter.intro_image_hide_on_mobile && "intro-image-hide-mobile"
   }`;
 
   return (

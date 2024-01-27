@@ -1,16 +1,21 @@
-import React from 'react';
-import { graphql } from 'gatsby';
-import SEO from '../components/SEO';
-import Layout from '../components/Layout';
-import Call from '../components/Call';
+// reviewed;
+import React from "react";
+import { graphql } from "gatsby";
+import SEO from "../components/SEO";
+import Layout from "../components/Layout";
 
-const Team = props => {
+const Team = (props) => {
   const team = props.data.team.edges;
   const { intro } = props.data;
-  const introImageClasses = `intro-image ${intro.frontmatter.intro_image_absolute && 'intro-image-absolute'} ${intro.frontmatter.intro_image_hide_on_mobile && 'intro-image-hide-mobile'}`;
+  const introImageClasses = `intro-image ${
+    intro.frontmatter.intro_image_absolute && "intro-image-absolute"
+  } ${
+    intro.frontmatter.intro_image_hide_on_mobile && "intro-image-hide-mobile"
+  }`;
 
   return (
     <Layout bodyClass="page-teams">
+      {/* FIXME: Update title */}
       <SEO title="Team" />
 
       <div className="intro">
@@ -21,7 +26,11 @@ const Team = props => {
             </div>
             {intro.frontmatter.intro_image && (
               <div className="col-12 col-md-5 col-lg-6 order-1 order-md-2 position-relative">
-                <img alt={intro.frontmatter.title} className={introImageClasses} src={intro.frontmatter.intro_image} />
+                <img
+                  alt={intro.frontmatter.title}
+                  className={introImageClasses}
+                  src={intro.frontmatter.intro_image}
+                />
               </div>
             )}
           </div>
@@ -30,50 +39,71 @@ const Team = props => {
 
       <div className="container">
         <div className="row">
-          {team.filter(edge => (edge.node.frontmatter.promoted)).map(({ node }) => (
-            <div key={node.id} className="col-12 col-md-6 mb-2">
-              <div className="team team-summary team-summary-large">
-                {node.frontmatter.image && (
-                  <div className="team-image">
-                    <img alt={`photo of ${node.frontmatter.title}`} className="img-fluid mb-2" src={node.frontmatter.image} />
-                  </div>
-                )}
-                <div className="team-meta">
-                  <h2 className="team-name">{node.frontmatter.title}</h2>
-                  <p className="team-description">{node.frontmatter.jobtitle}</p>
-                  {node.frontmatter.linkedin && (
-                    <a target="_blank" href="{{ .Params.Linkedinurl }}">LinkedIn</a>
+          {team
+            .filter((edge) => edge.node.frontmatter.promoted)
+            .map(({ node }) => (
+              <div key={node.id} className="col-12 col-md-6 mb-2">
+                <div className="team team-summary team-summary-large">
+                  {node.frontmatter.image && (
+                    <div className="team-image">
+                      <img
+                        // FIXME: possibly will need customisation
+                        alt={`photo of ${node.frontmatter.title}`}
+                        className="img-fluid mb-2"
+                        src={node.frontmatter.image}
+                      />
+                    </div>
                   )}
-                </div>
-                <div className="team-content">
-                  <p>{node.excerpt}</p>
+                  <div className="team-meta">
+                    <h2 className="team-name">{node.frontmatter.title}</h2>
+                    <p className="team-description">
+                      {node.frontmatter.jobtitle}
+                    </p>
+                    {node.frontmatter.linkedin && (
+                      <a target="_blank" href="{{ .Params.Linkedinurl }}">
+                        LinkedIn
+                      </a>
+                    )}
+                  </div>
+                  <div className="team-content">
+                    <p>{node.excerpt}</p>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
         </div>
         <div className="row pt-6 pb-6">
-          {team.filter(edge => (!edge.node.frontmatter.promoted)).map(({ node }) => (
-            <div key={node.id} className="col-12 col-md-6 mb-2">
-              <div className="team team-summary">
-                {node.frontmatter.image && (
-                  <div className="team-image">
-                    <img alt={`photo of ${node.frontmatter.title}`} className="img-fluid mb-2" src={node.frontmatter.image} />
-                  </div>
-                )}
-                <div className="team-meta">
-                  <h2 className="team-name">{node.frontmatter.title}</h2>
-                  <p className="team-description">{node.frontmatter.jobtitle}</p>
-                  {node.frontmatter.linkedin && (
-                    <a target="_blank" href="{{ .Params.Linkedinurl }}">LinkedIn</a>
+          {team
+            .filter((edge) => !edge.node.frontmatter.promoted)
+            .map(({ node }) => (
+              <div key={node.id} className="col-12 col-md-6 mb-2">
+                <div className="team team-summary">
+                  {node.frontmatter.image && (
+                    <div className="team-image">
+                      <img
+                        // FIXME: possibly will need customisation
+                        alt={`photo of ${node.frontmatter.title}`}
+                        className="img-fluid mb-2"
+                        src={node.frontmatter.image}
+                      />
+                    </div>
                   )}
+                  <div className="team-meta">
+                    <h2 className="team-name">{node.frontmatter.title}</h2>
+                    <p className="team-description">
+                      {node.frontmatter.jobtitle}
+                    </p>
+                    {node.frontmatter.linkedin && (
+                      <a target="_blank" href="{{ .Params.Linkedinurl }}">
+                        LinkedIn
+                      </a>
+                    )}
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
         </div>
       </div>
-
     </Layout>
   );
 };
@@ -81,7 +111,7 @@ const Team = props => {
 export const query = graphql`
   query TeamQuery {
     team: allMarkdownRemark(
-      filter: { fileAbsolutePath: { regex: "/team\/.*/" } }
+      filter: { fileAbsolutePath: { regex: "/team/.*/" } }
       sort: { fields: [frontmatter___date], order: DESC }
     ) {
       edges {
@@ -101,7 +131,7 @@ export const query = graphql`
         }
       }
     }
-    intro: markdownRemark(fileAbsolutePath: {regex: "/(team.md)/"}) {
+    intro: markdownRemark(fileAbsolutePath: { regex: "/(team.md)/" }) {
       html
       frontmatter {
         image

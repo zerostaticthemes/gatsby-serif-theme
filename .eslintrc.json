@@ -21,10 +21,8 @@
     },
     "rules": {
         "max-len": ["error", { "code": 160 }],
-        "quotes": ["error", "single", { "allowTemplateLiterals": true }],
         "linebreak-style": ["error", "unix"],
         "semi": ["error", "always"],
-        "arrow-parens": ["error", "as-needed"],
         "arrow-body-style": ["error", "as-needed"],
         "no-unused-vars": 0,
         "no-console": 0,
